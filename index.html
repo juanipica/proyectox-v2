@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    
+    <title>Proyecto X | Soluciones Digitales y Crecimiento Estratégico para PyMEs</title>
+    <meta name="description" content="Aceleramos el crecimiento y ordenamos las operaciones de PyMEs con tecnología simple, automatización, CRM y adquisición de alto impacto.">
+    
+    <!-- Mercury Site Tracking Snippet -->
+    <script 
+      src="https://mercury-two-gamma.vercel.app/tracker.js" 
+      data-tenant="mi-organizacion" 
+      async>
+    </script>
+    
+    <!-- Favicon SVG con nuevo isotipo PX -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0f0d'/><path d='M26 30 V70 M26 30 H44 C53 30 53 50 44 50 H26' stroke='%23ffffff' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M48 48 L76 74 M76 48 L52 74' stroke='%2384cc16' stroke-width='9' stroke-linecap='round'/></svg>">
+    
+    <!-- Google Fonts: Inter & Plus Jakarta Sans (Tipografía moderna de agencia top) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN con configuración personalizada -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            lime: '#84cc16',
+                            limeHover: '#65a30d',
+                            limeLight: '#ecfccb',
+                            limeGlow: 'rgba(132, 204, 22, 0.28)',
+                            darkBg: '#090d0b',
+                            darkCard: '#111714',
+                            darkBorder: 'rgba(255, 255, 255, 0.08)',
+                            lightBg: '#fcfdfb',
+                            lightCard: '#ffffff',
+                            lightBorder: 'rgba(0, 0, 0, 0.06)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Agency Styles -->
+    <style>
+        :root {
+            color-scheme: dark light;
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* Glassmorphism Top-tier */
+        .glass-nav {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .dark .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 250, 250, 0.75) 100%);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Ambient Glow & Grid */
+        .ambient-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(132, 204, 22, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(132, 204, 22, 0.04) 1px, transparent 1px);
+        }
+
+        .dark .ambient-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        /* Text Gradients */
+        .lime-gradient-text {
+            background: linear-gradient(135deg, #a3e635 0%, #84cc16 50%, #4d7c0f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .silver-gradient-text {
+            background: linear-gradient(180deg, #ffffff 20%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Pulse glow for badges */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.08); }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+
+        /* Scroll Reveal Utility Classes */
+        .reveal-init {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Interactive Card Hover Shine */
+        .card-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(132, 204, 22, 0.12) 0%, transparent 65%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .card-shine:hover::after {
+            opacity: 1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d0b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27342b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #84cc16;
+        }
+    </style>
+</head>
+<body class="dark bg-[#090d0b] text-gray-100 selection:bg-lime-500 selection:text-black">
+
+    <!-- AMBIENT BACKGROUND GLOWS -->
+    <div class="fixed inset-0 pointer-events-none z-0 ambient-grid"></div>
+    <div class="fixed -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[450px] bg-lime-500/10 blur-[140px] rounded-full pointer-events-none z-0"></div>
+    <div class="fixed top-1/2 -right-40 w-[500px] h-[500px] bg-lime-500/5 blur-[160px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- NOTIFICATION BAR (Top Tier Trust Banner) -->
+    <aside aria-label="Anuncio" class="relative z-50 bg-gradient-to-r from-neutral-900 via-neutral-950 to-neutral-900 border-b border-white/5 py-2 px-4 text-xs font-medium text-gray-400">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2 mx-auto sm:mx-0">
+                <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-lime-400 animate-ping mr-1"></span>
+                <span class="text-white font-semibold">Q2 2026:</span>
+                <span>Cupos abiertos para diagnósticos estratégicos e implementación ágil en PyMEs de Latam.</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-4 text-gray-400">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-lime-400 text-[10px]"></i> Certificados Oficiales HubSpot & AI</span>
+                <span class="text-white/20">|</span>
+                <a href="#contacto" class="text-lime-400 hover:text-lime-300 font-semibold underline underline-offset-4">Agendar reunión &rarr;</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 transition-all duration-300 glass-nav border-b border-white/5 bg-[#090d0b]/80 dark:bg-[#090d0b]/80 light-header:bg-white/80">
+        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+            
+            <!-- LOGO: PX Monograma Minimalista de Alta Gama -->
+            <a href="#" class="flex items-center gap-3.5 group" aria-label="Proyecto X Inicio">
+                <div class="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 group-hover:border-lime-500/50 transition-all duration-300 shadow-lg shadow-black/40 group-hover:shadow-lime-500/10">
+                    <!-- Isotipo SVG Rediseñado PX -->
+                    <svg class="w-7 h-7 transform group-hover:scale-105 transition-transform" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- P estilizada -->
+                        <path d="M26 24 V76 M26 24 H48 C60 24 60 48 48 48 H26" stroke="currentColor" class="text-white dark:text-white" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- X estilizada cruzada en acento Verde Lima -->
+                        <path d="M50 48 L78 78" stroke="#84cc16" stroke-width="8.5" stroke-linecap="round"/>
+                        <path d="M78 48 L54 74" stroke="#84cc16" stroke-width="8.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-tight font-display text-white group-hover:text-lime-400 transition-colors flex items-center gap-1">
+                        Proyecto<span class="text-lime-400 font-black">X</span>
+                    </span>
+                    <span class="text-[10px] tracking-wider uppercase font-semibold text-gray-400 dark:text-gray-400">
+                        Acciones digitales &bull; Clientes reales
+                    </span>
+                </div>
+            </a>
+
+            <!-- DESKTOP NAV -->
+            <nav class="hidden lg:flex items-center space-x-1" aria-label="Navegación principal">
+                <a href="#problemas" class="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Problemas</a>
+                <a href="#soluciones" class="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Soluciones</a>
+                <a href="#partners" class="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Partners</a>
+                <a href="#metodo" class="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Metodología</a>
+                <a href="diagnostico.html" class="px-4 py-2 text-sm font-semibold text-lime-400 hover:text-lime-300 hover:bg-lime-500/10 rounded-lg transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-bolt text-xs"></i> Autodiagnóstico
+                </a>
+            </nav>
+
+            <!-- RIGHT CONTROLS: THEME TOGGLE & CTA -->
+            <div class="flex items-center gap-3">
+                <!-- Theme Mode Switcher -->
+                <button id="theme-toggle" aria-label="Cambiar tema claro u oscuro" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white transition-all">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
+
+                <!-- WhatsApp Fast Pill -->
+                <a href="https://wa.me/5491160455913?text=Hola,%20quiero%20conocer%20m%C3%A1s%20sobre%20Proyecto%20X" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 transition-all" title="WhatsApp directo">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                </a>
+
+                <!-- Main CTA Button -->
+                <a href="#contacto" class="hidden sm:inline-flex items-center gap-2 bg-lime-500 hover:bg-lime-400 text-black font-extrabold px-5 py-2.5 rounded-xl text-sm transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shadow-lime-500/20 hover:shadow-lime-500/40">
+                    <span>Agendá Diagnóstico</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+
+                <!-- Mobile Menu Hamburger -->
+                <button id="mobile-menu-btn" aria-label="Abrir menú" class="lg:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300">
+                    <i class="fa-solid fa-bars-staggered text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU OVERLAY -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-white/10 bg-[#0c120f]/95 backdrop-blur-xl px-6 py-6 space-y-4">
+            <nav class="flex flex-col space-y-3 font-semibold text-gray-300 text-base">
+                <a href="#problemas" class="mobile-link py-2 border-b border-white/5 flex justify-between items-center">
+                    <span>Problemas Habituales</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-600"></i>
+                </a>
+                <a href="#soluciones" class="mobile-link py-2 border-b border-white/5 flex justify-between items-center">
+                    <span>Soluciones que se Pagan Solas</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-600"></i>
+                </a>
+                <a href="#partners" class="mobile-link py-2 border-b border-white/5 flex justify-between items-center">
+                    <span>Alianzas (HubSpot & Expertise.AI)</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-600"></i>
+                </a>
+                <a href="#metodo" class="mobile-link py-2 border-b border-white/5 flex justify-between items-center">
+                    <span>Metodología en 4 Pasos</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-600"></i>
+                </a>
+                <a href="diagnostico.html" class="mobile-link py-2 text-lime-400 flex justify-between items-center">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-bolt"></i> Autodiagnóstico Express</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </a>
+            </nav>
+            <div class="pt-4 flex flex-col gap-3">
+                <a href="#contacto" class="mobile-link w-full py-3.5 bg-lime-500 text-black font-extrabold rounded-xl text-center shadow-lg shadow-lime-500/25">
+                    Agendá tu Diagnóstico Estratégico
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-10">
+
+        <!-- HERO SECTION: Premium Top Agency Aesthetic -->
+        <section class="relative min-h-[90vh] flex items-center justify-center pt-24 pb-20 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto text-center">
+                    
+                    <!-- Top Pill Tag -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-lime-500/10 border border-lime-500/30 text-lime-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-8 reveal-init">
+                        <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+                        Soluciones Digitales de Alta Performance para PyMEs
+                    </div>
+
+                    <!-- Main Catchy Headline -->
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-extrabold font-display tracking-tight text-white leading-[1.12] mb-8 reveal-init">
+                        Transformá tu empresa con tecnología que genera <span class="lime-gradient-text inline-block">resultados reales</span>.
+                    </h1>
+
+                    <!-- Editorial Subtitle -->
+                    <p class="text-base sm:text-xl text-gray-300 dark:text-gray-300 max-w-2xl mx-auto font-normal leading-relaxed mb-10 reveal-init">
+                        Te ayudamos a vender más y ordenar tu negocio con herramientas digitales simples, sin fricción y con foco absoluto en facturación.
+                    </p>
+
+                    <!-- CTAs Group -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal-init">
+                        <a href="#contacto" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-lime-500 hover:bg-lime-400 text-black text-base font-extrabold px-8 py-4 rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 shadow-xl shadow-lime-500/20 hover:shadow-lime-500/35">
+                            <span>Agendá tu Diagnóstico Estratégico</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="#soluciones" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white text-base font-bold px-7 py-4 rounded-xl transition-all duration-300 backdrop-blur-md">
+                            <span>Explorar Soluciones</span>
+                            <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+                        </a>
+                    </div>
+
+                    <!-- Social Proof / Micro-indicators Bar -->
+                    <div class="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center reveal-init">
+                        <div>
+                            <div class="text-2xl md:text-3xl font-black text-white font-display">48 hs</div>
+                            <div class="text-xs text-gray-400 font-medium mt-1">Diagnóstico & Plan de Acción</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-black text-lime-400 font-display">100%</div>
+                            <div class="text-xs text-gray-400 font-medium mt-1">Enfoque en ROI y Facturación</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-black text-white font-display">24 / 7</div>
+                            <div class="text-xs text-gray-400 font-medium mt-1">Adquisición y Atención Automatizada</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-black text-lime-400 font-display">Top Tier</div>
+                            <div class="text-xs text-gray-400 font-medium mt-1">Partners Oficiales Globales</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 1: PROBLEMAS COMUNES (Diagnóstico interactivo de dolores) -->
+        <section id="problemas" class="py-28 relative border-t border-white/5 bg-[#0b100d]/60">
+            <div class="container mx-auto px-6">
+                
+                <div class="max-w-3xl mx-auto text-center mb-20 reveal-init">
+                    <span class="text-xs font-black uppercase tracking-widest text-lime-400 bg-lime-500/10 px-3.5 py-1.5 rounded-full border border-lime-500/20">Fricciones Reales</span>
+                    <h2 class="text-3xl sm:text-5xl font-black font-display text-white mt-4 mb-5">
+                        ¿Te pasa esto en tu PyME?
+                    </h2>
+                    <p class="text-gray-400 text-lg">
+                        Identificamos los puntos ciegos que te impiden crecer. Pasá el mouse sobre cada tarjeta para revelar la solución exacta.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    
+                    <!-- Tarjeta 1: Publicidad sin Retorno -->
+                    <div class="group glass-card card-shine p-8 rounded-2xl relative transition-all duration-300 hover:-translate-y-2 hover:border-lime-500/50 reveal-init">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 text-2xl group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Punto de dolor #01</span>
+                        </div>
+                        <h3 class="text-xl font-black text-white group-hover:text-lime-400 transition-colors mb-3">
+                            Publicidad sin Retorno
+                        </h3>
+                        <p class="text-gray-400 group-hover:opacity-20 transition-opacity text-sm leading-relaxed">
+                            "Invierto en publicidad digital todos los meses pero no veo clientes reales ni predecibles. Siento que quemo presupuesto en likes vacíos."
+                        </p>
+                        <!-- Solución en Hover -->
+                        <div class="absolute inset-0 bg-[#121c16] border-2 border-lime-500/70 p-8 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-center">
+                            <span class="text-xs font-black uppercase tracking-wider text-lime-400 mb-2">Solución Proyecto X</span>
+                            <h4 class="text-lg font-black text-white mb-2">Google Ads + Landing Pages</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Estrategia de búsqueda de alta intención unida a páginas de aterrizaje con propuesta de valor única para transformar clicks en facturación.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Dependencia Física -->
+                    <div class="group glass-card card-shine p-8 rounded-2xl relative transition-all duration-300 hover:-translate-y-2 hover:border-lime-500/50 reveal-init">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 text-2xl group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Punto de dolor #02</span>
+                        </div>
+                        <h3 class="text-xl font-black text-white group-hover:text-lime-400 transition-colors mb-3">
+                            Dependencia Física
+                        </h3>
+                        <p class="text-gray-400 group-hover:opacity-20 transition-opacity text-sm leading-relaxed">
+                            "Mis ventas dependen 100% del local o de la presencia física. Si las persianas están bajas o es feriado, la empresa no factura."
+                        </p>
+                        <!-- Solución en Hover -->
+                        <div class="absolute inset-0 bg-[#121c16] border-2 border-lime-500/70 p-8 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-center">
+                            <span class="text-xs font-black uppercase tracking-wider text-lime-400 mb-2">Solución Proyecto X</span>
+                            <h4 class="text-lg font-black text-white mb-2">Tienda Online de Alto Rendimiento</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Plataforma de e-commerce robusta, optimizada para conversión móvil e integrada a pasarelas de pago y stock automatizado 24/7.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3: Fuga de Leads -->
+                    <div class="group glass-card card-shine p-8 rounded-2xl relative transition-all duration-300 hover:-translate-y-2 hover:border-lime-500/50 reveal-init">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 text-2xl group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                                <i class="fa-solid fa-user-clock"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Punto de dolor #03</span>
+                        </div>
+                        <h3 class="text-xl font-black text-white group-hover:text-lime-400 transition-colors mb-3">
+                            Fuga de Leads
+                        </h3>
+                        <p class="text-gray-400 group-hover:opacity-20 transition-opacity text-sm leading-relaxed">
+                            "Llegan consultas por Instagram y WhatsApp pero tardamos horas en responder o se pierden en el chat. La competencia nos gana por velocidad."
+                        </p>
+                        <!-- Solución en Hover -->
+                        <div class="absolute inset-0 bg-[#121c16] border-2 border-lime-500/70 p-8 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-center">
+                            <span class="text-xs font-black uppercase tracking-wider text-lime-400 mb-2">Solución Proyecto X</span>
+                            <h4 class="text-lg font-black text-white mb-2">Bandeja Unificada + Respuestas Inmediatas</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Centralización de canales y automatización con IA para calificar prospectos en menos de 60 segundos y asignar citas al equipo comercial.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4: Caos de Datos -->
+                    <div class="group glass-card card-shine p-8 rounded-2xl relative transition-all duration-300 hover:-translate-y-2 hover:border-lime-500/50 reveal-init">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 text-2xl group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                                <i class="fa-solid fa-table-cells"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Punto de dolor #04</span>
+                        </div>
+                        <h3 class="text-xl font-black text-white group-hover:text-lime-400 transition-colors mb-3">
+                            Caos de Datos y Planillas
+                        </h3>
+                        <p class="text-gray-400 group-hover:opacity-20 transition-opacity text-sm leading-relaxed">
+                            "Nuestra información comercial vive desperdigada en Excel desactualizados, mensajes sueltos o cuadernos personales de cada vendedor."
+                        </p>
+                        <!-- Solución en Hover -->
+                        <div class="absolute inset-0 bg-[#121c16] border-2 border-lime-500/70 p-8 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-center">
+                            <span class="text-xs font-black uppercase tracking-wider text-lime-400 mb-2">Solución Proyecto X</span>
+                            <h4 class="text-lg font-black text-white mb-2">Implementación Profesional CRM</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Configuración de HubSpot y bases de datos centralizadas. Pipelines transparentes para dar seguimiento preciso a cada cotización abierta.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 5: Ventas Inconsistentes -->
+                    <div class="group glass-card card-shine p-8 rounded-2xl relative transition-all duration-300 hover:-translate-y-2 hover:border-lime-500/50 reveal-init">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 text-2xl group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Punto de dolor #05</span>
+                        </div>
+                        <h3 class="text-xl font-black text-white group-hover:text-lime-400 transition-colors mb-3">
+                            Ventas Inconsistentes
+                        </h3>
+                        <p class="text-gray-400 group-hover:opacity-20 transition-opacity text-sm leading-relaxed">
+                            "Un mes cerramos bien y al siguiente reina la incertidumbre. No tenemos una máquina predecible para atraer nuevos clientes de manera constante."
+                        </p>
+                        <!-- Solución en Hover -->
+                        <div class="absolute inset-0 bg-[#121c16] border-2 border-lime-500/70 p-8 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-center">
+                            <span class="text-xs font-black uppercase tracking-wider text-lime-400 mb-2">Solución Proyecto X</span>
+                            <h4 class="text-lg font-black text-white mb-2">Generación de Demanda Predecible</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Diseñamos un proceso comercial repetible y sistemático de prospección y adquisición multicanal para estabilizar y escalar los ingresos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 6: Ceguera Comercial (BI) -->
+                    <div class="group glass-card card-shine p-8 rounded-2xl relative transition-all duration-300 hover:-translate-y-2 hover:border-lime-500/50 reveal-init">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 text-2xl group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                                <i class="fa-solid fa-compass"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Punto de dolor #06</span>
+                        </div>
+                        <h3 class="text-xl font-black text-white group-hover:text-lime-400 transition-colors mb-3">
+                            Ceguera Comercial
+                        </h3>
+                        <p class="text-gray-400 group-hover:opacity-20 transition-opacity text-sm leading-relaxed">
+                            "Tomamos decisiones por intuición o corazonadas. No sabemos cuál producto tiene más margen real ni qué canal genera el cliente más rentable."
+                        </p>
+                        <!-- Solución en Hover -->
+                        <div class="absolute inset-0 bg-[#121c16] border-2 border-lime-500/70 p-8 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-center">
+                            <span class="text-xs font-black uppercase tracking-wider text-lime-400 mb-2">Solución Proyecto X</span>
+                            <h4 class="text-lg font-black text-white mb-2">Business Intelligence (BI)</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Tableros ejecutivos en tiempo real con KPIs clave para directores: costo de adquisición (CAC), valor de vida (LTV) y rentabilidad por canal.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-16 reveal-init">
+                    <a href="#contacto" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300">
+                        <span>¿Reconocés estos síntomas en tu empresa? Hablemos</span>
+                        <i class="fa-solid fa-arrow-right text-lime-400"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BANNER DE AUTODIAGNÓSTICO EXPRESS (Callout Interactivo) -->
+        <section class="py-16 relative overflow-hidden bg-gradient-to-r from-lime-950/40 via-neutral-900 to-lime-950/40 border-y border-lime-500/20">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                    <div>
+                        <span class="text-xs font-black text-lime-400 uppercase tracking-widest">Sin costo &bull; 2 minutos</span>
+                        <h3 class="text-2xl sm:text-3xl font-black font-display text-white mt-1">¿No estás seguro de cuál es el problema principal?</h3>
+                        <p class="text-gray-400 text-sm sm:text-base mt-2 max-w-xl">
+                            Completá 4 preguntas rápidas y nuestro recomendador te indicará en qué etapa exacta de tu embudo estás perdiendo facturación.
+                        </p>
+                    </div>
+                    <a href="diagnostico.html" class="inline-flex items-center gap-3 bg-lime-500 hover:bg-lime-400 text-black font-black px-7 py-4 rounded-xl text-sm transition-all whitespace-nowrap shadow-xl shadow-lime-500/20 hover:scale-105">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>Iniciar Autodiagnóstico Express</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: SOLUCIONES QUE SE PAGAN SOLAS (Grid 3x2 Dark Premium) -->
+        <section id="soluciones" class="py-32 relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                
+                <div class="max-w-3xl mx-auto text-center mb-20 reveal-init">
+                    <span class="text-xs font-black uppercase tracking-widest text-lime-400 bg-lime-500/10 px-3.5 py-1.5 rounded-full border border-lime-500/20">Portfolio Tecnológico</span>
+                    <h2 class="text-3xl sm:text-5xl font-black font-display text-white mt-4 mb-5">
+                        Nuestras Soluciones se <span class="lime-gradient-text">Pagan Solas</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg">
+                        Tecnología de última generación traducida en orden operativo, reducción de tiempos y facturación contable.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    
+                    <!-- Solución 1: Google Ads Experto -->
+                    <div class="glass-card p-8 rounded-2xl border border-white/5 hover:border-lime-500/40 transition-all duration-300 hover:-translate-y-1 group reveal-init">
+                        <div class="w-14 h-14 rounded-xl bg-lime-500/10 flex items-center justify-center text-lime-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                            <i class="fa-brands fa-google"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Google Ads de Alta Conversión</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Convertimos búsquedas activas en prospectos calificados. Cada peso invertido se calibra para atraer demanda con billetera en mano, no tráfico irrelevante.
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-400 border-t border-white/5 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Búsqueda orientada a transaccionalidad</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Landings con alta tasa de conversión</li>
+                        </ul>
+                    </div>
+
+                    <!-- Solución 2: Tienda Online 24/7 -->
+                    <div class="glass-card p-8 rounded-2xl border border-white/5 hover:border-lime-500/40 transition-all duration-300 hover:-translate-y-1 group reveal-init">
+                        <div class="w-14 h-14 rounded-xl bg-lime-500/10 flex items-center justify-center text-lime-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Tienda Online 24/7 Escalable</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Tu negocio abierto siempre. Implementamos plataformas de e-commerce diseñadas para cerrar ventas de forma autónoma, conectadas con stock, logística y medios de pago.
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-400 border-t border-white/5 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Checkout ultra-rápido de un paso</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Integración con inventario físico</li>
+                        </ul>
+                    </div>
+
+                    <!-- Solución 3: Generación de Leads -->
+                    <div class="glass-card p-8 rounded-2xl border border-white/5 hover:border-lime-500/40 transition-all duration-300 hover:-translate-y-1 group reveal-init">
+                        <div class="w-14 h-14 rounded-xl bg-lime-500/10 flex items-center justify-center text-lime-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Generación Constante de Leads</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Estrategias de captación B2B y B2C para llenar la agenda de tu equipo comercial con oportunidades precalificadas y listas para avanzar.
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-400 border-t border-white/5 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Filtros de prospección y scoring</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Lead magnets de alto valor</li>
+                        </ul>
+                    </div>
+
+                    <!-- Solución 4: Automatización WhatsApp/CRM -->
+                    <div class="glass-card p-8 rounded-2xl border border-white/5 hover:border-lime-500/40 transition-all duration-300 hover:-translate-y-1 group reveal-init">
+                        <div class="w-14 h-14 rounded-xl bg-lime-500/10 flex items-center justify-center text-lime-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Automatización WhatsApp & CRM</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Respuestas en segundos, secuencias de seguimiento programadas y reactivación de clientes inactivos. Eliminamos la pérdida de cotizaciones por demora humana.
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-400 border-t border-white/5 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Respuestas inteligentes 24/7</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Disparadores de compra y recordatorios</li>
+                        </ul>
+                    </div>
+
+                    <!-- Solución 5: Sistemas Centralizados -->
+                    <div class="glass-card p-8 rounded-2xl border border-white/5 hover:border-lime-500/40 transition-all duration-300 hover:-translate-y-1 group reveal-init">
+                        <div class="w-14 h-14 rounded-xl bg-lime-500/10 flex items-center justify-center text-lime-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Sistemas Centralizados</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Migramos a tu empresa del desorden de planillas a plataformas de gestión conectadas. Pipelines limpios y total visibilidad del ciclo de cada cliente.
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-400 border-t border-white/5 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Migración segura desde Excel</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Capacitación directa para tu equipo</li>
+                        </ul>
+                    </div>
+
+                    <!-- Solución 6: Inteligencia Comercial -->
+                    <div class="glass-card p-8 rounded-2xl border border-white/5 hover:border-lime-500/40 transition-all duration-300 hover:-translate-y-1 group reveal-init">
+                        <div class="w-14 h-14 rounded-xl bg-lime-500/10 flex items-center justify-center text-lime-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-lime-500 group-hover:text-black transition-all">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Inteligencia Comercial (BI)</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Analítica predictiva y tableros en tiempo real para anticipar tendencias de demanda, optimizar márgenes e identificar los clientes de mayor rendimiento financiero.
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-400 border-t border-white/5 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Tableros ejecutivos en vivo</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-400"></i> Decisiones basadas en números auditables</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-16 reveal-init">
+                    <a href="#contacto" class="inline-flex items-center gap-3 bg-lime-500 hover:bg-lime-400 text-black font-black px-9 py-4 rounded-xl text-base transition-all duration-300 shadow-xl shadow-lime-500/20 hover:scale-105">
+                        <span>Aplicar estas soluciones en mi Empresa</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: PARTNERS TECNOLÓGICOS (HubSpot Solutions Partner & Expertise.AI) -->
+        <section id="partners" class="py-28 relative border-t border-white/5 bg-[#0a0f0c]">
+            <div class="container mx-auto px-6 relative z-10">
+                
+                <div class="max-w-3xl mx-auto text-center mb-20 reveal-init">
+                    <span class="text-xs font-black uppercase tracking-widest text-lime-400 bg-lime-500/10 px-3.5 py-1.5 rounded-full border border-lime-500/20">Alianzas Globales</span>
+                    <h2 class="text-3xl sm:text-5xl font-black font-display text-white mt-4 mb-5">
+                        Respaldados por Líderes Tecnológicos
+                    </h2>
+                    <p class="text-gray-400 text-lg">
+                        No improvisamos. Integramos las herramientas líderes de clase mundial directamente adaptadas a la realidad y escala de las PyMEs.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                    
+                    <!-- HubSpot Card -->
+                    <div class="relative glass-card p-10 sm:p-12 rounded-3xl border border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-1.5 group reveal-init">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                            <div class="bg-white/95 px-5 py-3 rounded-xl inline-flex items-center justify-center w-fit shadow-md">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg" alt="HubSpot Solutions Partner" class="h-8 w-auto">
+                            </div>
+                            <span class="inline-flex items-center gap-1.5 bg-orange-500/10 text-orange-400 border border-orange-500/30 px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-widest w-fit">
+                                <i class="fa-solid fa-certificate"></i> Solutions Partner
+                            </span>
+                        </div>
+
+                        <h3 class="text-2xl font-black text-white mb-4">
+                            Especialistas en Aumento Explosivo de Leads Calificados
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Implementamos procesos comerciales simples y propuestas de valor directas que eliminan la fricción en la adquisición y gestión de contactos con alto poder de compra.
+                        </p>
+                        
+                        <div class="p-4 rounded-xl bg-orange-500/5 border border-orange-500/10 text-orange-300 text-sm font-semibold mb-8">
+                            "Si creés que duplicar tus ventas es posible, ponemos la plataforma y la metodología para convertirlo en realidad operativa."
+                        </div>
+
+                        <div class="pt-6 border-t border-white/5 flex items-center justify-between">
+                            <a href="https://ecosystem.hubspot.com/marketplace/solutions/proyectox" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-bold text-sm transition-colors group-hover:underline">
+                                <span>Ver Directorio Oficial HubSpot</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                            <span class="text-xs text-gray-500 font-medium">Verificado</span>
+                        </div>
+                    </div>
+
+                    <!-- Expertise.AI Card -->
+                    <div class="relative glass-card p-10 sm:p-12 rounded-3xl border border-indigo-500/20 hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1.5 group reveal-init">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                            <div class="bg-white/95 px-5 py-3 rounded-xl inline-flex items-center justify-center w-fit shadow-md min-h-[48px]">
+                                <img src="expertise-logo-DuLS5o9l.png" alt="Expertise.AI Logo" class="h-8 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <span class="hidden text-gray-900 font-black text-lg tracking-tight items-center gap-2">
+                                    <i class="fa-solid fa-robot text-indigo-600"></i> Expertise.AI
+                                </span>
+                            </div>
+                            <span class="inline-flex items-center gap-1.5 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-widest w-fit">
+                                <i class="fa-solid fa-circle-check"></i> Official Partner Latam
+                            </span>
+                        </div>
+
+                        <h3 class="text-2xl font-black text-white mb-4">
+                            Inteligencia Artificial y Atención Conversacional Continua
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Implementamos agentes de IA conversacionales que van mucho más allá de respuestas automáticas básicas: resuelven dudas complejas, cotizan y agendan 24/7 sin sumar carga a tu equipo.
+                        </p>
+                        
+                        <div class="p-4 rounded-xl bg-indigo-500/5 border border-indigo-500/10 text-indigo-300 text-sm font-semibold mb-8">
+                            "Tu PyME brindando atención y cierre con la agilidad y precisión de una multinacional líder, todos los días del año."
+                        </div>
+
+                        <div class="pt-6 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-indigo-400 font-bold text-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-shield-check"></i> Partner Certificado para Latinoamérica
+                            </span>
+                            <span class="text-xs text-gray-500 font-medium">IA Conversacional</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: METODOLOGÍA ÁGIL (4 Pasos sin riesgo) -->
+        <section id="metodo" class="py-28 relative">
+            <div class="container mx-auto px-6">
+                
+                <div class="max-w-3xl mx-auto text-center mb-20 reveal-init">
+                    <span class="text-xs font-black uppercase tracking-widest text-lime-400 bg-lime-500/10 px-3.5 py-1.5 rounded-full border border-lime-500/20">Proceso Ágil</span>
+                    <h2 class="text-3xl sm:text-5xl font-black font-display text-white mt-4 mb-5">
+                        Mentalidad Startup, Resultados PyME
+                    </h2>
+                    <p class="text-gray-400 text-lg">
+                        Un proceso modular de validación rápida para minimizar riesgos financieros y maximizar retorno.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto relative">
+                    
+                    <!-- Paso 1 -->
+                    <div class="glass-card p-8 rounded-2xl relative text-center group hover:border-lime-500/50 transition-all duration-300 reveal-init">
+                        <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-lime-500 to-lime-600 text-black flex items-center justify-center font-black text-2xl font-display mb-6 shadow-lg shadow-lime-500/20 group-hover:scale-110 transition-transform">
+                            01
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Diagnóstico</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Analizamos tus números y detectamos el mayor cuello de botella en menos de 48 horas. Sin rodeos técnicos.
+                        </p>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="glass-card p-8 rounded-2xl relative text-center group hover:border-lime-500/50 transition-all duration-300 reveal-init">
+                        <div class="w-16 h-16 mx-auto rounded-2xl bg-white/10 text-lime-400 border border-lime-500/30 flex items-center justify-center font-black text-2xl font-display mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Piloto Ágil</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Implementamos y testeamos la solución a escala controlada. Rápido, económico y enfocado en validación.
+                        </p>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="glass-card p-8 rounded-2xl relative text-center group hover:border-lime-500/50 transition-all duration-300 reveal-init">
+                        <div class="w-16 h-16 mx-auto rounded-2xl bg-white/10 text-lime-400 border border-lime-500/30 flex items-center justify-center font-black text-2xl font-display mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Medición</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Auditamos el ROI real y la tasa de conversión con métricas concretas antes de escalar inversión.
+                        </p>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="glass-card p-8 rounded-2xl relative text-center group hover:border-lime-500/50 transition-all duration-300 reveal-init">
+                        <div class="w-16 h-16 mx-auto rounded-2xl bg-lime-500 text-black flex items-center justify-center font-black text-2xl font-display mb-6 shadow-lg shadow-lime-500/20 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Escalado</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Una vez validada la tracción, multiplicamos los resultados expandiendo el sistema a toda tu operación.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: PILARES DE VALOR CON CONTADORES ANIMADOS -->
+        <section class="py-24 relative border-y border-white/5 bg-[#0a0f0d]">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+                    
+                    <div class="px-6 py-4 reveal-init">
+                        <div class="w-16 h-16 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center text-3xl mx-auto mb-6">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div class="text-4xl lg:text-5xl font-black font-display text-white mb-2">
+                            <span class="counter" data-target="300">0</span>%
+                        </div>
+                        <h3 class="text-lg font-black text-white mb-2">Aumento Explosivo de Leads</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Especializados en colmar tu embudo con prospectos de alta intención comercial, listos para cotizar y comprar.
+                        </p>
+                    </div>
+
+                    <div class="px-6 py-4 reveal-init">
+                        <div class="w-16 h-16 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center text-3xl mx-auto mb-6">
+                            <i class="fa-solid fa-handshake-simple"></i>
+                        </div>
+                        <div class="text-4xl lg:text-5xl font-black font-display text-white mb-2">
+                            <span class="counter" data-target="0">0</span> Fricción
+                        </div>
+                        <h3 class="text-lg font-black text-white mb-2">Procesos Simples y Claros</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Reducimos las barreras burocráticas y el desorden. Herramientas amigables adoptadas con entusiasmo por tu equipo.
+                        </p>
+                    </div>
+
+                    <div class="px-6 py-4 reveal-init">
+                        <div class="w-16 h-16 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center text-3xl mx-auto mb-6">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="text-4xl lg:text-5xl font-black font-display text-white mb-2">
+                            2<span class="text-lime-400 font-extrabold">&times;</span>
+                        </div>
+                        <h3 class="text-lg font-black text-white mb-2">Objetivo: Duplicar Facturación</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Si sabés que tu modelo de negocio da para más, nosotros sumamos la tecnología y el rigor para materializarlo.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: CONTACTO & FORMULARIO HUBSPOT INTEGRADO -->
+        <section id="contacto" class="py-32 relative overflow-hidden bg-[#090d0b]">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-16 items-center max-w-7xl mx-auto">
+                    
+                    <!-- Columna Izquierda: Mensaje y Beneficios -->
+                    <div class="lg:col-span-6 reveal-init">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-lime-500/10 border border-lime-500/30 text-lime-400 text-xs font-black uppercase tracking-widest mb-6">
+                            <i class="fa-solid fa-hand-holding-dollar"></i> Sin Compromiso Comercial
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black font-display text-white leading-tight mb-6">
+                            Listo para el Salto. Hablemos de <span class="lime-gradient-text">TU</span> PyME.
+                        </h2>
+                        <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                            Dejá de adivinar y empezá a medir. Solicitá tu primera auditoría estratégica. Te llevás un plan de acción concreto y aplicable, trabajemos juntos o no.
+                        </p>
+
+                        <div class="space-y-4 mb-10">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-lime-500/10 border border-lime-500/30 flex items-center justify-center text-lime-400 shrink-0">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-base">Análisis de situación y diagnóstico actual</h4>
+                                    <p class="text-gray-400 text-sm">Revisamos tus canales, velocidad de respuesta y conversión.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-lime-500/10 border border-lime-500/30 flex items-center justify-center text-lime-400 shrink-0">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-base">Detección de fugas de dinero</h4>
+                                    <p class="text-gray-400 text-sm">Identificamos en qué etapa exacta se caen las consultas.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-lime-500/10 border border-lime-500/30 flex items-center justify-center text-lime-400 shrink-0">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-base">Propuesta de crecimiento escalable</h4>
+                                    <p class="text-gray-400 text-sm">Roadmap paso a paso para duplicar la capacidad comercial.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Direct Contacts -->
+                        <div class="flex flex-wrap items-center gap-4 pt-6 border-t border-white/10 text-sm text-gray-300">
+                            <a href="https://wa.me/5491160455913?text=Quiero%20agendar%20una%20reuni%C3%B3n" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:text-lime-400 transition-colors">
+                                <i class="fa-brands fa-whatsapp text-emerald-400 text-base"></i> +54 9 11 6045-5913
+                            </a>
+                            <span class="text-white/20">&bull;</span>
+                            <a href="mailto:info@proyectox.tech" class="inline-flex items-center gap-2 hover:text-lime-400 transition-colors">
+                                <i class="fa-solid fa-envelope text-lime-400"></i> info@proyectox.tech
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Tarjeta de Formulario HubSpot con Respaldo Nativo -->
+                    <div class="lg:col-span-6 reveal-init">
+                        <div class="glass-card rounded-3xl p-8 sm:p-10 border border-white/10 shadow-2xl relative">
+                            <div class="text-center mb-6">
+                                <span class="text-xs font-bold uppercase tracking-widest text-lime-400">Plan a Medida</span>
+                                <h3 class="text-2xl font-black font-display text-white mt-1">Conseguí tu Plan de Acción</h3>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-1">Completá tus datos y un director de Proyecto X coordinará la llamada.</p>
+                            </div>
+
+                            <!-- Contenedor Oficial HubSpot Form -->
+                            <div id="hubspot-form-container-index" class="min-h-[280px]">
+                                <!-- Formulario Alternativo / Fallback interactivo si se visualiza offline o sin cookies -->
+                                <form id="direct-contact-fallback" onsubmit="handleDirectContact(event)" class="space-y-4">
+                                    <div>
+                                        <label for="contact-name" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Nombre Completo</label>
+                                        <input type="text" id="contact-name" required placeholder="Tu nombre o empresa" class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-lime-500 transition-colors text-sm">
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="contact-email" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Email Profesional</label>
+                                            <input type="email" id="contact-email" required placeholder="tu@empresa.com" class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-lime-500 transition-colors text-sm">
+                                        </div>
+                                        <div>
+                                            <label for="contact-phone" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Teléfono / WhatsApp</label>
+                                            <input type="tel" id="contact-phone" required placeholder="+54 9 11..." class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-lime-500 transition-colors text-sm">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="contact-desc" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">¿Qué desafío te gustaría resolver primero?</label>
+                                        <textarea id="contact-desc" rows="3" placeholder="Ej: Mejorar el seguimiento de leads en WhatsApp o crear una tienda online..." class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-lime-500 transition-colors text-sm resize-none"></textarea>
+                                    </div>
+                                    <button type="submit" class="w-full py-4 rounded-xl bg-lime-500 hover:bg-lime-400 text-black font-black text-sm uppercase tracking-wider transition-all duration-300 shadow-xl shadow-lime-500/20 hover:scale-[1.02]">
+                                        Solicitar Auditoría Gratuita &rarr;
+                                    </button>
+                                </form>
+                            </div>
+
+                            <p class="text-center text-[11px] text-gray-500 mt-4">
+                                <i class="fa-solid fa-lock text-[10px] text-lime-500 mr-1"></i> Respetamos tu privacidad. Sin spam ni llamadas molestas.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER: Top Agency Editorial Layout -->
+    <footer class="bg-[#050806] text-gray-400 py-16 border-t border-white/5 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+                
+                <!-- Col 1: Brand & Bio -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-neutral-900 border border-white/10 flex items-center justify-center">
+                            <svg class="w-6 h-6" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M26 24 V76 M26 24 H48 C60 24 60 48 48 48 H26" stroke="#ffffff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M50 48 L78 78" stroke="#84cc16" stroke-width="8.5" stroke-linecap="round"/>
+                                <path d="M78 48 L54 74" stroke="#84cc16" stroke-width="8.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-black text-white font-display">Proyecto<span class="text-lime-400">X</span></span>
+                    </div>
+                    <p class="text-sm text-gray-400 max-w-sm leading-relaxed">
+                        Acciones digitales que transforman negocios reales. Ayudamos a PyMEs a competir con las herramientas de los líderes globales.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="mailto:info@proyectox.tech" aria-label="Email" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-lime-500 hover:text-black border border-white/10 flex items-center justify-center text-gray-300 transition-all">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                        <a href="https://wa.me/5491160455913?text=Quiero%20agendar%20una%20reuni%C3%B3n" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-lime-500 hover:text-black border border-white/10 flex items-center justify-center text-gray-300 transition-all">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="https://share.google/iw35wlaJMrA2BQJlR" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-lime-500 hover:text-black border border-white/10 flex items-center justify-center text-gray-300 transition-all">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="text-white font-extrabold text-sm uppercase tracking-wider">Navegación</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#problemas" class="hover:text-lime-400 transition-colors">Problemas Habituales</a></li>
+                        <li><a href="#soluciones" class="hover:text-lime-400 transition-colors">Soluciones Integrales</a></li>
+                        <li><a href="#partners" class="hover:text-lime-400 transition-colors">Alianzas HubSpot & AI</a></li>
+                        <li><a href="#metodo" class="hover:text-lime-400 transition-colors">Metodología en 4 Pasos</a></li>
+                        <li><a href="diagnostico.html" class="text-lime-400 hover:underline">Autodiagnóstico Express &rarr;</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Location & Direct Contact -->
+                <div class="lg:col-span-4 space-y-3">
+                    <h4 class="text-white font-extrabold text-sm uppercase tracking-wider">Sede & Contacto Directo</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-lime-400 mt-1"></i>
+                            <a href="https://share.google/iw35wlaJMrA2BQJlR" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                                Scalabrini Ortiz 3257<br>CABA, Buenos Aires, Argentina
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-lime-400"></i>
+                            <a href="https://wa.me/5491160455913?text=Quiero%20agendar%20una%20reuni%C3%B3n" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                                +54 9 11 6045-5913
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-lime-400"></i>
+                            <a href="mailto:info@proyectox.tech" class="hover:text-white transition-colors">
+                                info@proyectox.tech
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+                <p>&copy; 2026 Proyecto X. Todos los derechos reservados.</p>
+                <p class="flex items-center gap-2">
+                    <span>Diseñado con tecnología de alta gama para PyMEs</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-lime-500"></span>
+                    <span>Buenos Aires &bull; Latam</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- HUBSPOT FORM EMBEDDING -->
+    <script>
+        (function() {
+            var script = document.createElement('script');
+            script.charset = 'utf-8';
+            script.type = 'text/javascript';
+            script.src = '//js.hsforms.net/forms/embed/v2.js';
+            
+            script.onload = function() {
+                if (window.hbspt) {
+                    var container = document.getElementById('hubspot-form-container-index');
+                    if (container) {
+                        // Limpia el fallback nativo cuando cargue el script oficial de HubSpot
+                        container.innerHTML = '';
+                        hbspt.forms.create({
+                            region: "na1",
+                            portalId: "50306694",
+                            formId: "aa1a18fb-00ae-4cdc-98fa-e988aec76d32",
+                            target: '#hubspot-form-container-index'
+                        });
+                    }
+                }
+            };
+            
+            document.head.appendChild(script);
+        })();
+    </script>
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/50306694.js"></script>
+
+    <!-- CUSTOM SCRIPTS: THEME TOGGLE, SCROLL REVEALS & COUNTERS -->
+    <script>
+        // 1. MODO CLARO / OSCURO INTEGRADO
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        function setTheme(theme) {
+            if (theme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.body.classList.remove('dark', 'bg-[#090d0b]', 'text-gray-100');
+                document.body.classList.add('light', 'bg-[#f8faf7]', 'text-gray-900');
+                themeIcon.className = 'fa-solid fa-sun text-amber-500';
+                localStorage.setItem('px_theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                document.body.classList.remove('light', 'bg-[#f8faf7]', 'text-gray-900');
+                document.body.classList.add('dark', 'bg-[#090d0b]', 'text-gray-100');
+                themeIcon.className = 'fa-solid fa-moon text-lime-400';
+                localStorage.setItem('px_theme', 'dark');
+            }
+        }
+
+        // Leer preferencia inicial
+        const savedTheme = localStorage.getItem('px_theme') || 'dark';
+        setTheme(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(isDark ? 'light' : 'dark');
+        });
+
+        // 2. MOBILE MENU
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // 3. INTERSECTION OBSERVER PARA SCROLL REVEAL (FADE-IN ELEGANTE)
+        const revealElements = document.querySelectorAll('.reveal-init');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 4. CONTADORES ANIMADOS
+        const counters = document.querySelectorAll('.counter');
+        let countersStarted = false;
+
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                if (target === 0) return;
+                const duration = 1600; // ms
+                const stepTime = 20;
+                const steps = duration / stepTime;
+                const increment = target / steps;
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.innerText = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = Math.ceil(current);
+                    }
+                }, stepTime);
+            });
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersStarted) {
+                    countersStarted = true;
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const counterSection = document.querySelector('.counter')?.closest('section');
+        if (counterSection) {
+            counterObserver.observe(counterSection);
+        }
+
+        // 5. RESPALDO DE FORMULARIO NATIVO (SI HUBSPOT ESTÁ BLOQUEADO POR EXTENSIONES)
+        function handleDirectContact(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const phone = document.getElementById('contact-phone').value;
+            const desc = document.getElementById('contact-desc').value;
+
+            // Rastrear evento en Mercury
+            if (window.mercury) {
+                if (window.mercury.identify) window.mercury.identify(email, { name: name, phone: phone });
+                if (window.mercury.track) window.mercury.track('lead_contacto_enviado', { interes: desc });
+            }
+
+            const msg = encodeURIComponent(`Hola Proyecto X! Soy ${name} (${email}, Tel: ${phone}). Quisiera agendar un diagnóstico estratégico. Detalle: ${desc}`);
+            window.open(`https://wa.me/5491160455913?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>

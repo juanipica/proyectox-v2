@@ -1,0 +1,4 @@
+original_*
+scratch_*
+.vercel
+node_modules

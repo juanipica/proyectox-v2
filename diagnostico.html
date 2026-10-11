@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    
+    <title>Auditoría de Embudo Comercial | Proyecto X</title>
+    <meta name="description" content="Detectá los cuellos de botella exactos de tu embudo de ventas en 2 minutos con el autodiagnóstico express de Proyecto X.">
+    
+    <!-- Mercury Site Tracking Snippet -->
+    <script 
+      src="https://mercury-two-gamma.vercel.app/tracker.js" 
+      data-tenant="mi-organizacion" 
+      async>
+    </script>
+    
+    <!-- Favicon SVG con nuevo isotipo PX -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0f0d'/><path d='M26 30 V70 M26 30 H44 C53 30 53 50 44 50 H26' stroke='%23ffffff' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M48 48 L76 74 M76 48 L52 74' stroke='%2384cc16' stroke-width='9' stroke-linecap='round'/></svg>">
+    
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            lime: '#84cc16',
+                            limeHover: '#65a30d',
+                            limeLight: '#ecfccb',
+                            darkBg: '#090d0b',
+                            darkCard: '#111714',
+                            darkBorder: 'rgba(255, 255, 255, 0.08)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            color-scheme: dark light;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 250, 250, 0.75) 100%);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .step-content { display: none; }
+        .step-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .option-card {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .option-card:hover {
+            border-color: #84cc16;
+            background-color: rgba(132, 204, 22, 0.08);
+        }
+
+        .option-card.selected {
+            border-color: #84cc16;
+            background-color: rgba(132, 204, 22, 0.16);
+            box-shadow: 0 0 0 1px #84cc16;
+        }
+    </style>
+</head>
+<body class="dark bg-[#090d0b] text-gray-100 flex flex-col min-h-screen">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl border-b border-white/5 bg-[#090d0b]/80">
+        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+            
+            <a href="index.html" class="flex items-center gap-3.5 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 group-hover:border-lime-500/50 flex items-center justify-center transition-all">
+                    <svg class="w-6 h-6" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26 24 V76 M26 24 H48 C60 24 60 48 48 48 H26" stroke="#ffffff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M50 48 L78 78" stroke="#84cc16" stroke-width="8.5" stroke-linecap="round"/>
+                        <path d="M78 48 L54 74" stroke="#84cc16" stroke-width="8.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xl font-black font-display text-white">Proyecto<span class="text-lime-400">X</span></span>
+                    <span class="text-[10px] tracking-wider uppercase font-semibold text-gray-400 block -mt-1">Autodiagnóstico</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white">
+                    <i id="theme-icon" class="fa-solid fa-moon text-lime-400"></i>
+                </button>
+                <a href="index.html" class="text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left"></i> Volver a la web
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN DIAGNÓSTICO WIZARD -->
+    <main class="flex-grow container mx-auto px-4 py-12 max-w-4xl flex flex-col justify-center relative z-10">
+        
+        <!-- PANTALLA 1: BIENVENIDA -->
+        <div id="screen-welcome" class="step-content active text-center py-8">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-lime-500/10 border border-lime-500/30 text-lime-400 rounded-2xl mb-6 shadow-xl shadow-lime-500/10">
+                <i class="fa-solid fa-magnifying-glass-chart text-3xl"></i>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-black font-display mb-4 text-white tracking-tight">
+                Auditoría de Procesos Comerciales
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto font-normal">
+                ¿En qué etapa exacta estás perdiendo <span class="text-white font-bold underline decoration-lime-500 decoration-2 underline-offset-4">ventas</span> hoy? 
+                Detectá los cuellos de botella de tu embudo en menos de 2 minutos.
+            </p>
+            <button onclick="startDiagnostic()" class="inline-flex items-center gap-3 px-8 py-4 text-base font-black text-black bg-lime-500 rounded-xl hover:bg-lime-400 hover:scale-105 transition-all shadow-xl shadow-lime-500/20">
+                <span>Iniciar Diagnóstico Express</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <div class="mt-8 flex justify-center gap-6 text-xs text-gray-400 font-medium">
+                <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-lime-400"></i> 2 min</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-bolt text-lime-400"></i> Resultado inmediato</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-lock text-lime-400"></i> 100% Confidencial</span>
+            </div>
+        </div>
+
+        <!-- CONTENEDOR DEL WIZARD -->
+        <div id="wizard-container" class="hidden glass-card rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+            <!-- Barra de Progreso Superior -->
+            <div class="bg-neutral-900/60 border-b border-white/10 px-8 py-5">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest" id="step-label">FASE 1: PROSPECTACIÓN</span>
+                    <span class="text-xs font-bold text-lime-400 bg-lime-500/10 border border-lime-500/30 px-3 py-1 rounded-full" id="progress-text">25%</span>
+                </div>
+                <div class="w-full bg-neutral-800 rounded-full h-1.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-lime-500 h-1.5 rounded-full transition-all duration-500" style="width: 25%"></div>
+                </div>
+            </div>
+
+            <div class="p-8 md:p-12 min-h-[440px] flex flex-col justify-center">
+                <!-- PASO 1 -->
+                <div id="step-1" class="step-content active">
+                    <span class="text-xs font-bold text-lime-400 uppercase tracking-widest block mb-2">Paso 1 de 4</span>
+                    <h3 class="text-2xl md:text-3xl font-black font-display text-white mb-2">¿Cómo llegan hoy las consultas a tu negocio?</h3>
+                    <p class="text-gray-400 text-sm mb-6">Seleccioná la opción que mejor describe tu situación actual:</p>
+                    <div class="space-y-3">
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(1, 'insuficiente', this)">
+                            <div class="font-bold text-white mb-1">Pocas o nulas consultas nuevas</div>
+                            <p class="text-xs text-gray-400">Dependemos casi exclusivamente del boca a boca o de recomendaciones espontáneas.</p>
+                        </div>
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(1, 'no_calificado', this)">
+                            <div class="font-bold text-white mb-1">Muchas consultas, pero poco calificadas</div>
+                            <p class="text-xs text-gray-400">Preguntan por precio y desaparecen; no coinciden con nuestro cliente ideal.</p>
+                        </div>
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(1, 'estable', this)">
+                            <div class="font-bold text-white mb-1">Flujo constante y predecible</div>
+                            <p class="text-xs text-gray-400">Tenemos canales activos que generan prospectos con regularidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 2 -->
+                <div id="step-2" class="step-content">
+                    <span class="text-xs font-bold text-lime-400 uppercase tracking-widest block mb-2">Paso 2 de 4</span>
+                    <h3 class="text-2xl md:text-3xl font-black font-display text-white mb-2">¿Dónde presentás tu propuesta de valor?</h3>
+                    <p class="text-gray-400 text-sm mb-6">¿Qué ve el prospecto cuando busca tu empresa en digital?</p>
+                    <div class="space-y-3">
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(2, 'baja_conversion', this)">
+                            <div class="font-bold text-white mb-1">Web desactualizada o redes sociales sin conversión</div>
+                            <p class="text-xs text-gray-400">Los visitantes navegan pero se van sin iniciar contacto ni cotizar.</p>
+                        </div>
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(2, 'sin_web', this)">
+                            <div class="font-bold text-white mb-1">No tenemos sitio web ni landing page profesional</div>
+                            <p class="text-xs text-gray-400">Derivamos todo manualmente a WhatsApp personal o catálogo en PDF.</p>
+                        </div>
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(2, 'buena_conversion', this)">
+                            <div class="font-bold text-white mb-1">Página optimizada con buena tasa de conversión</div>
+                            <p class="text-xs text-gray-400">Explica claramente el servicio/producto e incita a la acción.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 3 -->
+                <div id="step-3" class="step-content">
+                    <span class="text-xs font-bold text-lime-400 uppercase tracking-widest block mb-2">Paso 3 de 4</span>
+                    <h3 class="text-2xl md:text-3xl font-black font-display text-white mb-2">¿Qué tan rápido se cotiza o atiende una consulta?</h3>
+                    <p class="text-gray-400 text-sm mb-6">La velocidad de respuesta es el factor #1 de conversión en digital:</p>
+                    <div class="space-y-3">
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(3, 'lento', this)">
+                            <div class="font-bold text-white mb-1">Tardamos más de 4 horas o al día siguiente</div>
+                            <p class="text-xs text-gray-400">Los vendedores están saturados o no hay alertas automáticas.</p>
+                        </div>
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(3, 'manual', this)">
+                            <div class="font-bold text-white mb-1">Respondemos en menos de 1 hora, pero todo manual</div>
+                            <p class="text-xs text-gray-400">Depende de que alguien esté mirando el teléfono constantemente.</p>
+                        </div>
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(3, 'automatizado', this)">
+                            <div class="font-bold text-white mb-1">Respuesta inmediata automatizada o bot calificador</div>
+                            <p class="text-xs text-gray-400">El prospecto recibe respuesta y agendamiento en segundos 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 4 -->
+                <div id="step-4" class="step-content">
+                    <span class="text-xs font-bold text-lime-400 uppercase tracking-widest block mb-2">Paso 4 de 4</span>
+                    <h3 class="text-2xl md:text-3xl font-black font-display text-white mb-2">¿Cómo gestionan el seguimiento de cotizaciones abiertas?</h3>
+                    <p class="text-gray-400 text-sm mb-6">El 80% de las ventas se concretan tras el 4to contacto:</p>
+                    <div class="space-y-3">
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(4, 'sin_seguimiento', this)">
+                            <div class="font-bold text-white mb-1">Sin seguimiento formal o recordatorios sistemáticos</div>
+                            <p class="text-xs text-gray-400">Si el cliente no vuelve a escribir, la venta queda abandonada.</p>
+                        </div>
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(4, 'excel', this)">
+                            <div class="font-bold text-white mb-1">Anotamos en Excel, notas o WhatsApp</div>
+                            <p class="text-xs text-gray-400">Muchas veces se nos pasan fechas o se pierde el historial del cliente.</p>
+                        </div>
+                        <div class="option-card p-5 rounded-2xl border border-white/10 bg-neutral-900/40" onclick="selectOption(4, 'crm_activo', this)">
+                            <div class="font-bold text-white mb-1">CRM con pipeline y recordatorios automáticos</div>
+                            <p class="text-xs text-gray-400">Seguimiento riguroso de cada oportunidad hasta el cierre.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Wizard Navegación -->
+            <div class="bg-neutral-900/80 border-t border-white/10 px-8 py-5 flex justify-between items-center">
+                <button id="btn-back" onclick="prevStep()" class="text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white hidden flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left"></i> Anterior
+                </button>
+                <div class="ml-auto">
+                    <button id="btn-next" disabled onclick="nextStep()" class="px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider bg-neutral-800 text-gray-500 cursor-not-allowed transition-all">
+                        Continuar &rarr;
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE RESULTADOS -->
+        <div id="screen-results" class="hidden glass-card rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl">
+            <div class="text-center mb-10">
+                <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-black uppercase tracking-widest mb-3">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Diagnóstico Preliminar
+                </span>
+                <h2 class="text-3xl md:text-4xl font-black font-display text-white mb-2">Cuello de Botella Detectado:</h2>
+                <h3 id="problem-name" class="text-2xl md:text-3xl font-extrabold text-lime-400 mb-4">...</h3>
+                <p id="problem-desc" class="text-gray-300 max-w-xl mx-auto text-sm leading-relaxed">...</p>
+            </div>
+
+            <!-- Visual Funnel Breakdown -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 text-center">
+                <div id="vis-step-1" class="p-3 rounded-xl border border-white/10 bg-neutral-900 text-xs font-bold text-gray-400">1. Prospectación</div>
+                <div id="vis-step-2" class="p-3 rounded-xl border border-white/10 bg-neutral-900 text-xs font-bold text-gray-400">2. Presentación</div>
+                <div id="vis-step-3" class="p-3 rounded-xl border border-white/10 bg-neutral-900 text-xs font-bold text-gray-400">3. Cotización</div>
+                <div id="vis-step-4" class="p-3 rounded-xl border border-white/10 bg-neutral-900 text-xs font-bold text-gray-400">4. Cierre</div>
+            </div>
+
+            <!-- Formulario para recibir el informe completo -->
+            <div class="bg-neutral-900/60 border border-white/10 p-6 md:p-8 rounded-2xl max-w-xl mx-auto">
+                <h4 class="text-lg font-bold text-white mb-2 text-center">Recibí la Solución Exacta y Plan de Acción</h4>
+                <p class="text-xs text-gray-400 text-center mb-6">Dejanos tus datos para coordinar una reunión de 20 minutos sin cargo.</p>
+                
+                <form id="lead-form" onsubmit="submitDiagnosticForm(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Nombre</label>
+                        <input type="text" id="diag-name" required placeholder="Tu nombre" class="w-full px-4 py-2.5 rounded-xl bg-neutral-950 border border-white/10 text-white text-sm focus:outline-none focus:border-lime-500">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Email</label>
+                            <input type="email" id="diag-email" required placeholder="tu@empresa.com" class="w-full px-4 py-2.5 rounded-xl bg-neutral-950 border border-white/10 text-white text-sm focus:outline-none focus:border-lime-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">WhatsApp</label>
+                            <input type="tel" id="diag-phone" required placeholder="+54 9 11..." class="w-full px-4 py-2.5 rounded-xl bg-neutral-950 border border-white/10 text-white text-sm focus:outline-none focus:border-lime-500">
+                        </div>
+                    </div>
+                    <button type="submit" id="diag-submit-btn" class="w-full py-3.5 bg-lime-500 hover:bg-lime-400 text-black font-black text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-lime-500/20">
+                        Agendar Diagnóstico Gratuito &rarr;
+                    </button>
+                </form>
+
+                <div id="diag-feedback-success" class="hidden text-center py-6">
+                    <div class="w-12 h-12 bg-lime-500/20 text-lime-400 rounded-full flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h5 class="text-white font-bold text-lg mb-1">¡Diagnóstico Registrado!</h5>
+                    <p class="text-xs text-gray-400 mb-4">Te redirigimos a WhatsApp para coordinar el horario de tu sesión.</p>
+                    <a id="whatsapp-redirect-btn" href="#" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Abrir WhatsApp ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER SIMPLE -->
+    <footer class="py-6 border-t border-white/5 text-center text-xs text-gray-500">
+        &copy; 2026 Proyecto X &bull; Diagnóstico de Procesos Digitales para PyMEs
+    </footer>
+
+    <script>
+        // MODO CLARO / OSCURO
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        function setTheme(theme) {
+            if (theme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.body.classList.remove('dark', 'bg-[#090d0b]', 'text-gray-100');
+                document.body.classList.add('light', 'bg-[#f8faf7]', 'text-gray-900');
+                themeIcon.className = 'fa-solid fa-sun text-amber-500';
+                localStorage.setItem('px_theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                document.body.classList.remove('light', 'bg-[#f8faf7]', 'text-gray-900');
+                document.body.classList.add('dark', 'bg-[#090d0b]', 'text-gray-100');
+                themeIcon.className = 'fa-solid fa-moon text-lime-400';
+                localStorage.setItem('px_theme', 'dark');
+            }
+        }
+        setTheme(localStorage.getItem('px_theme') || 'dark');
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(isDark ? 'light' : 'dark');
+        });
+
+        // WIZARD LOGIC
+        let currentStep = 1;
+        const totalSteps = 4;
+        const answers = { 1: null, 2: null, 3: null, 4: null };
+        const labels = {
+            1: "FASE 1: PROSPECTACIÓN Y ADQUISICIÓN",
+            2: "FASE 2: PRESENTACIÓN DE PROPUESTA",
+            3: "FASE 3: VELOCIDAD DE COTIZACIÓN",
+            4: "FASE 4: CIERRE Y SEGUIMIENTO CRM"
+        };
+
+        function startDiagnostic() {
+            document.getElementById('screen-welcome').classList.remove('active');
+            document.getElementById('wizard-container').classList.remove('hidden');
+            updateUI();
+        }
+
+        function selectOption(step, val, el) {
+            answers[step] = val;
+            const container = document.getElementById(`step-${step}`);
+            container.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+
+            const nextBtn = document.getElementById('btn-next');
+            nextBtn.disabled = false;
+            nextBtn.classList.remove('bg-neutral-800', 'text-gray-500', 'cursor-not-allowed');
+            nextBtn.classList.add('bg-lime-500', 'text-black', 'hover:bg-lime-400');
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.getElementById(`step-${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+                updateUI();
+                
+                const nextBtn = document.getElementById('btn-next');
+                if (!answers[currentStep]) {
+                    nextBtn.disabled = true;
+                    nextBtn.classList.add('bg-neutral-800', 'text-gray-500', 'cursor-not-allowed');
+                    nextBtn.classList.remove('bg-lime-500', 'text-black', 'hover:bg-lime-400');
+                }
+            } else {
+                calculateResults();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step-${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+                updateUI();
+                const nextBtn = document.getElementById('btn-next');
+                nextBtn.disabled = false;
+                nextBtn.classList.remove('bg-neutral-800', 'text-gray-500', 'cursor-not-allowed');
+                nextBtn.classList.add('bg-lime-500', 'text-black');
+            }
+        }
+
+        function updateUI() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('progress-text').innerText = `${Math.round(progress)}%`;
+            document.getElementById('step-label').innerText = labels[currentStep];
+            document.getElementById('btn-back').classList.toggle('hidden', currentStep === 1);
+        }
+
+        function calculateResults() {
+            document.getElementById('wizard-container').classList.add('hidden');
+            document.getElementById('screen-results').classList.remove('hidden');
+
+            let problem = { name: "Procesos Saludables", desc: "Tu estructura actual tiene buenas bases. El siguiente paso consiste en aumentar volumen y optimizar márgenes con BI.", stepIndex: 5 };
+            
+            const a1 = answers[1]; const a2 = answers[2]; const a3 = answers[3]; const a4 = answers[4];
+            if (a1 === 'insuficiente') problem = { name: "Falta de Prospectación Activa", desc: "La principal fuga está al inicio: no hay suficiente volumen de prospectos calificados entrando al embudo semanalmente.", stepIndex: 1 };
+            else if (a1 === 'no_calificado') problem = { name: "Segmentación Desalineada", desc: "Estás recibiendo consultas pero no son tu cliente ideal. Necesitás filtros y campañas de alta intención transaccional.", stepIndex: 1 };
+            else if (a2 === 'baja_conversion' || a2 === 'sin_web') problem = { name: "Fricción en la Presentación de Valor", desc: "Los prospectos entran en contacto con tu marca pero la experiencia digital no transmite confianza ni claridad comercial.", stepIndex: 2 };
+            else if (a3 === 'lento') problem = { name: "Latencia en Cotización y Respuesta", desc: "Tardar más de unas horas reduce drásticamente la tasa de cierre. La competencia gana por inmediatez.", stepIndex: 3 };
+            else if (a4 === 'sin_seguimiento' || a4 === 'excel') problem = { name: "Fuga de Ventas por Falta de Seguimiento CRM", desc: "La mayoría de las cotizaciones mueren en el olvido por falta de un pipeline ordenado y recordatorios periódicos.", stepIndex: 4 };
+
+            document.getElementById('problem-name').innerText = problem.name;
+            document.getElementById('problem-desc').innerText = problem.desc;
+
+            // Colorear embudo visual
+            for (let i = 1; i <= 4; i++) {
+                const el = document.getElementById(`vis-step-${i}`);
+                if (i === problem.stepIndex) {
+                    el.className = "p-3 rounded-xl border-2 border-red-500 bg-red-500/10 text-xs font-black text-red-400";
+                    el.innerHTML = `⚠️ Cuello de Botella Aquí`;
+                } else if (i < problem.stepIndex) {
+                    el.className = "p-3 rounded-xl border border-lime-500/40 bg-lime-500/10 text-xs font-bold text-lime-400";
+                }
+            }
+        }
+
+        function submitDiagnosticForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('diag-name').value;
+            const email = document.getElementById('diag-email').value;
+            const phone = document.getElementById('diag-phone').value;
+            const problem = document.getElementById('problem-name').innerText;
+
+            // Rastrear evento en Mercury
+            if (window.mercury) {
+                if (window.mercury.identify) window.mercury.identify(email, { name: name, phone: phone });
+                if (window.mercury.track) window.mercury.track('diagnostico_completado', { cuello_de_botella: problem });
+            }
+
+            document.getElementById('lead-form').classList.add('hidden');
+            document.getElementById('diag-feedback-success').classList.remove('hidden');
+
+            const msg = encodeURIComponent(`Hola Proyecto X! Soy ${name} (${email}). Acabo de completar el diagnóstico express. Mi cuello de botella fue: "${problem}". Quiero coordinar la sesión estratégica.`);
+            document.getElementById('whatsapp-redirect-btn').href = `https://wa.me/5491160455913?text=${msg}`;
+        }
+    </script>
+</body>
+</html>
