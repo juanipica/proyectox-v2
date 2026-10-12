@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark light">
+    <meta name="color-scheme" content="dark">
     
     <title>Proyecto X | Soluciones Digitales y Crecimiento Estratégico para PyMEs</title>
     <meta name="description" content="Aceleramos el crecimiento y ordenamos las operaciones de PyMEs con tecnología simple, automatización, CRM y adquisición de alto impacto.">
@@ -216,13 +216,8 @@
                 </a>
             </nav>
 
-            <!-- RIGHT CONTROLS: THEME TOGGLE & CTA -->
+            <!-- RIGHT CONTROLS: WHATSAPP & CTA -->
             <div class="flex items-center gap-3">
-                <!-- Theme Mode Switcher -->
-                <button id="theme-toggle" aria-label="Cambiar tema claro u oscuro" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white transition-all">
-                    <i id="theme-icon" class="fa-solid fa-moon"></i>
-                </button>
-
                 <!-- WhatsApp Fast Pill -->
                 <a href="https://wa.me/5491160455913?text=Hola,%20quiero%20conocer%20m%C3%A1s%20sobre%20Proyecto%20X" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 transition-all" title="WhatsApp directo">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
@@ -976,38 +971,9 @@
     </script>
     <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/50306694.js"></script>
 
-    <!-- CUSTOM SCRIPTS: THEME TOGGLE, SCROLL REVEALS & COUNTERS -->
+    <!-- CUSTOM SCRIPTS: SCROLL REVEALS & COUNTERS -->
     <script>
-        // 1. MODO CLARO / OSCURO INTEGRADO
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-
-        function setTheme(theme) {
-            if (theme === 'light') {
-                document.documentElement.classList.remove('dark');
-                document.body.classList.remove('dark', 'bg-[#090d0b]', 'text-gray-100');
-                document.body.classList.add('light', 'bg-[#f8faf7]', 'text-gray-900');
-                themeIcon.className = 'fa-solid fa-sun text-amber-500';
-                localStorage.setItem('px_theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                document.body.classList.remove('light', 'bg-[#f8faf7]', 'text-gray-900');
-                document.body.classList.add('dark', 'bg-[#090d0b]', 'text-gray-100');
-                themeIcon.className = 'fa-solid fa-moon text-lime-400';
-                localStorage.setItem('px_theme', 'dark');
-            }
-        }
-
-        // Leer preferencia inicial
-        const savedTheme = localStorage.getItem('px_theme') || 'dark';
-        setTheme(savedTheme);
-
-        themeToggleBtn.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            setTheme(isDark ? 'light' : 'dark');
-        });
-
-        // 2. MOBILE MENU
+        // 1. MOBILE MENU
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileBtn && mobileMenu) {

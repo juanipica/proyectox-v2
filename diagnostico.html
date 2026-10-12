@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark light">
+    <meta name="color-scheme" content="dark">
     
     <title>Auditoría de Embudo Comercial | Proyecto X</title>
     <meta name="description" content="Detectá los cuellos de botella exactos de tu embudo de ventas en 2 minutos con el autodiagnóstico express de Proyecto X.">
@@ -120,9 +120,6 @@
             </a>
 
             <div class="flex items-center gap-4">
-                <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white">
-                    <i id="theme-icon" class="fa-solid fa-moon text-lime-400"></i>
-                </button>
                 <a href="index.html" class="text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors flex items-center gap-1.5">
                     <i class="fa-solid fa-arrow-left"></i> Volver a la web
                 </a>
@@ -333,31 +330,6 @@
     </footer>
 
     <script>
-        // MODO CLARO / OSCURO
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-
-        function setTheme(theme) {
-            if (theme === 'light') {
-                document.documentElement.classList.remove('dark');
-                document.body.classList.remove('dark', 'bg-[#090d0b]', 'text-gray-100');
-                document.body.classList.add('light', 'bg-[#f8faf7]', 'text-gray-900');
-                themeIcon.className = 'fa-solid fa-sun text-amber-500';
-                localStorage.setItem('px_theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                document.body.classList.remove('light', 'bg-[#f8faf7]', 'text-gray-900');
-                document.body.classList.add('dark', 'bg-[#090d0b]', 'text-gray-100');
-                themeIcon.className = 'fa-solid fa-moon text-lime-400';
-                localStorage.setItem('px_theme', 'dark');
-            }
-        }
-        setTheme(localStorage.getItem('px_theme') || 'dark');
-        themeToggleBtn.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            setTheme(isDark ? 'light' : 'dark');
-        });
-
         // WIZARD LOGIC
         let currentStep = 1;
         const totalSteps = 4;
