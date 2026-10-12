@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    
+    <title>¡Mensaje Recibido! | Proyecto X</title>
+    <meta name="description" content="Gracias por contactar a Proyecto X. Recibimos tu consulta y nos pondremos en contacto en breve para coordinar tu diagnóstico estratégico.">
+    
+    <!-- Mercury Site Tracking Snippet -->
+    <script 
+      src="https://mercury-two-gamma.vercel.app/tracker.js" 
+      data-tenant="mi-organizacion" 
+      async>
+    </script>
+    
+    <!-- Favicon SVG con isotipo PX -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0f0d'/><path d='M26 30 V70 M26 30 H44 C53 30 53 50 44 50 H26' stroke='%23ffffff' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M48 48 L76 74 M76 48 L52 74' stroke='%2384cc16' stroke-width='9' stroke-linecap='round'/></svg>">
+    
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            lime: '#84cc16',
+                            limeHover: '#65a30d',
+                            limeLight: '#ecfccb',
+                            darkBg: '#090d0b',
+                            darkCard: '#111714',
+                            darkBorder: 'rgba(255, 255, 255, 0.08)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            color-scheme: dark;
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .ambient-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        .lime-gradient-text {
+            background: linear-gradient(135deg, #a3e635 0%, #84cc16 50%, #4d7c0f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="dark bg-[#090d0b] text-gray-100 flex flex-col min-h-screen relative selection:bg-lime-500 selection:text-black">
+
+    <!-- Ambient Lighting & Grid -->
+    <div class="fixed inset-0 pointer-events-none z-0 ambient-grid"></div>
+    <div class="fixed -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-lime-500/10 blur-[140px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- Header Minimalista -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl border-b border-white/5 bg-[#090d0b]/80">
+        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3.5 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 group-hover:border-lime-500/50 flex items-center justify-center transition-all">
+                    <svg class="w-6 h-6" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26 24 V76 M26 24 H48 C60 24 60 48 48 48 H26" stroke="#ffffff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M50 48 L78 78" stroke="#84cc16" stroke-width="8.5" stroke-linecap="round"/>
+                        <path d="M78 48 L54 74" stroke="#84cc16" stroke-width="8.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xl font-black font-display text-white">Proyecto<span class="text-lime-400">X</span></span>
+                    <span class="text-[10px] tracking-wider uppercase font-semibold text-gray-400 block -mt-1">Acciones digitales &bull; Clientes reales</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Volver a la web
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-6 py-16 flex items-center justify-center relative z-10">
+        <div class="max-w-2xl w-full text-center">
+            
+            <div class="glass-card p-10 sm:p-14 rounded-3xl border border-white/10 relative overflow-hidden shadow-2xl">
+                <!-- Glowing Check Circle -->
+                <div class="w-20 h-20 rounded-2xl bg-lime-500/10 border border-lime-500/30 text-lime-400 flex items-center justify-center text-4xl mx-auto mb-8 shadow-xl shadow-lime-500/10">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-lime-500/10 border border-lime-500/20 text-lime-400 text-xs font-black uppercase tracking-widest mb-4">
+                    Solicitud Registrada con Éxito
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-black font-display text-white mb-4 tracking-tight leading-tight">
+                    ¡Gracias por dar el <span class="lime-gradient-text">primer paso</span>!
+                </h1>
+
+                <p class="text-gray-300 text-base sm:text-lg mb-8 leading-relaxed max-w-lg mx-auto">
+                    Recibimos tus datos correctamente. Un director de <span class="text-white font-semibold">Proyecto X</span> analizará tu caso y se pondrá en contacto dentro de las próximas 24 horas hábiles para coordinar tu sesión estratégica.
+                </p>
+
+                <!-- Next Steps Card -->
+                <div class="bg-neutral-900/60 border border-white/5 rounded-2xl p-6 text-left mb-8 space-y-3">
+                    <div class="text-xs font-bold uppercase tracking-wider text-lime-400 mb-2">¿Qué sucede a continuación?</div>
+                    
+                    <div class="flex items-start gap-3 text-sm text-gray-300">
+                        <div class="w-6 h-6 rounded-full bg-lime-500/10 text-lime-400 flex items-center justify-center text-xs font-black shrink-0 mt-0.5">1</div>
+                        <p>Auditamos preliminarmente tus canales y presencia digital.</p>
+                    </div>
+
+                    <div class="flex items-start gap-3 text-sm text-gray-300">
+                        <div class="w-6 h-6 rounded-full bg-lime-500/10 text-lime-400 flex items-center justify-center text-xs font-black shrink-0 mt-0.5">2</div>
+                        <p>Te escribimos por WhatsApp o email para coordinar día y horario.</p>
+                    </div>
+
+                    <div class="flex items-start gap-3 text-sm text-gray-300">
+                        <div class="w-6 h-6 rounded-full bg-lime-500/10 text-lime-400 flex items-center justify-center text-xs font-black shrink-0 mt-0.5">3</div>
+                        <p>En 20 minutos te mostramos el plan concreto para duplicar tus ventas.</p>
+                    </div>
+                </div>
+
+                <!-- Call to action buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/5491160455913?text=Hola%20Proyecto%20X,%20acabo%20de%20enviar%20el%20formulario%20y%20quiero%20acelerar%20mi%20reuni%C3%B3n." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-black text-sm uppercase tracking-wider px-7 py-4 rounded-xl transition-all shadow-lg shadow-emerald-500/20 hover:scale-105">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Acelerar por WhatsApp</span>
+                    </a>
+                    <a href="index.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm px-6 py-4 rounded-xl transition-all">
+                        <span>Regresar al Inicio</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 border-t border-white/5 text-center text-xs text-gray-500 relative z-10">
+        &copy; 2026 Proyecto X &bull; Acciones digitales que transforman negocios reales
+    </footer>
+
+    <!-- Rastrear conversión en Mercury si está disponible -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.mercury && window.mercury.track) {
+                window.mercury.track('formulario_contacto_completado', {
+                    submissionGuid: new URLSearchParams(window.location.search).get('submissionGuid') || null
+                });
+            }
+        });
+    </script>
+</body>
+</html>
